@@ -1,4 +1,6 @@
-# run in `ec2-user && centos`
+# This script`s will work from **RHEL** **CENTOS** only
+
+## **This script`s run in SUDO PRIVILEGE**
 
 ### install 
 
