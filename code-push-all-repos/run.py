@@ -19,7 +19,8 @@ with open(count_file, 'r') as f:
 
 # Loop through all Git repositories
 for dir_path in subprocess.getoutput("find . -type d -name .git | sed -e 's|/.git||'").splitlines():
-    print(f"{YELLOW}********* {dir_path} *********{NC}")
+    dir_name = os.path.basename(dir_path)  # Get the base directory name
+    print(f"{YELLOW}********* {dir_name} *********{NC}")
     os.chdir(dir_path)
 
     # Pull the latest changes

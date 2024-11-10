@@ -17,7 +17,8 @@ commit_count=$(cat $FILE)
 
 # Loop through all Git repositories
 for dir in $(find . -type d -name .git | sed -e 's|/.git||'); do
-    echo -e "${YELLOW}********* $dir *********${NC}"
+    dir_name=$(basename $dir)  # Get the directory name without the path
+    echo -e "${YELLOW}********* $dir_name *********${NC}"
     cd $dir
     
     # Pull the latest changes
