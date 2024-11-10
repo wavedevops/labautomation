@@ -29,21 +29,28 @@ for dir_path in subprocess.getoutput("find . -type d -name .git | sed -e 's|/.gi
     # Add all changes
     subprocess.run(['git', 'add', '-A'])
 
-    # Increment the commit count
-    commit_count += 1
+    # Check if there are changes to commit
+    status = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
+    
+    if status.stdout.strip():  # If there are changes to commit
+        # Increment the commit count
+        commit_count += 1
 
-    # Save the new commit count to the file
-    with open(count_file, 'w') as f:
-        f.write(f"{commit_count}\n")
+        # Save the new commit count to the file
+        with open(count_file, 'w') as f:
+            f.write(f"{commit_count}\n")
 
-    # Commit the changes with a message
-    subprocess.run(['git', 'commit', '-m', f"automated commit #{commit_count}"])
+        # Commit the changes with a message
+        commit_message = f"automated commit #{commit_count}"
+        subprocess.run(['git', 'commit', '-m', commit_message])
 
-    # Push the changes
-    subprocess.run(['git', 'push'])
+        # Push the changes
+        subprocess.run(['git', 'push'])
 
-    # Push tags if any
-    subprocess.run(['git', 'push', '--tags'])
+        # Push tags if any
+        subprocess.run(['git', 'push', '--tags'])
+    else:
+        print(f"{RED}No changes to commit in {dir_name}{NC}")
 
     # Go back to the original directory
     os.chdir('..')
