@@ -10,3 +10,18 @@
 - [Clean DNS Cache](How%20Tos%2013bc74fc208480cb9c64f525bfb1998f/Clean%20DNS%20Cache%2013bc74fc20848124bbe9cb4b52d92a8c.md)
 - [Advanced Putty Configuration](How%20Tos%2013bc74fc208480cb9c64f525bfb1998f/Advanced%20Putty%20Configuration%2013bc74fc208481b1b5b7e99872d0d698.md)
 - [Provide Access on GitHub](How%20Tos%2013bc74fc208480cb9c64f525bfb1998f/Provide%20Access%20on%20GitHub%2013bc74fc208481be8b18f651f8bbae80.md)
+
+
+## Video Reference
+
+The same above process is explained in the video format, and here is the link.
+
+[https://youtu.be/lUr3Pm2hNE0](https://youtu.be/lUr3Pm2hNE0)
+
+## Additional Video Links
+
+1. How to connect to an EC2 server from Windows Desktop Using Putty.
+    - [https://youtu.be/qc4TaYMKf0c](https://youtu.be/qc4TaYMKf0c)
+
+2. Best Options that Makes Putty more Productive.
+    - [https://youtu.be/PGpKq6lWyB4](https://youtu.be/PGpKq6lWyB4)
