@@ -7,18 +7,18 @@ Also, you can click the following link to choose region and service automaticall
 [https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)
 3. Choose Launch Instance.
     
-    ![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled.png)
+    ![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled.png)
     
 
-![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled%201.png)
+![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled 1.png)
 
-![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled%202.png)
+![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled 2.png)
 
-![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled%203.png)
+![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled 3.png)
 
-![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled%204.png)
+![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled 4.png)
 
-![Untitled](How%20to%20Create%20a%20EC2%20Server%2013bc74fc208481b3a1a0c0c5159ebc16/Untitled%205.png)
+![Untitled](How to Create a EC2 Server 13bc74fc208481b3a1a0c0c5159ebc16/Untitled 5.png)
 
 Once the instance is in the Running state then copy the IP address and connect to the server.
 
