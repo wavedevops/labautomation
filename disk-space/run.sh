@@ -17,8 +17,8 @@ lsblk || error_exit "Failed to list partitions"
 
 # Directly extend the logical volumes if no partition resize is possible
 echo -e "${GREEN}[INFO] Extending logical volumes...${NC}"
-sudo lvextend -l +50%FREE /dev/mapper/RootVG-rootVol || error_exit "Failed to extend root logical volume"
-sudo lvextend -l +50%FREE /dev/mapper/RootVG-varVol || error_exit "Failed to extend var logical volume"
+sudo lvextend -l +40%FREE /dev/mapper/RootVG-rootVol || error_exit "Failed to extend root logical volume"
+sudo lvextend -l +60%FREE /dev/mapper/RootVG-varVol || error_exit "Failed to extend var logical volume"
 
 # Resize the root filesystem
 echo -e "${GREEN}[INFO] Resizing root filesystem...${NC}"
