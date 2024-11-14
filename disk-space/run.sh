@@ -15,11 +15,7 @@ error_exit() {
 echo -e "${GREEN}[INFO] Checking partitions...${NC}"
 lsblk || error_exit "Failed to list partitions"
 
-# Resize the partition
-echo -e "${GREEN}[INFO] Resizing the partition...${NC}"
-sudo growpart /dev/nvme0n1 4 || error_exit "Failed to resize the partition"
-
-# Extend the Logical Volumes
+# Directly extend the logical volumes if no partition resize is possible
 echo -e "${GREEN}[INFO] Extending logical volumes...${NC}"
 sudo lvextend -l +50%FREE /dev/mapper/RootVG-rootVol || error_exit "Failed to extend root logical volume"
 sudo lvextend -l +50%FREE /dev/mapper/RootVG-varVol || error_exit "Failed to extend var logical volume"
