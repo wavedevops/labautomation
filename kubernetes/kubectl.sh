@@ -23,11 +23,12 @@ info() {
 }
 
 # Start of the script
-info "Starting kubectl installation..."
+info "Starting kubectl installation for x86_64 architecture..."
 
-# Step 1: Download kubectl
-info "Downloading kubectl..."
-curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/linux/arm64/kubectl
+# Step 1: Download kubectl for x86_64
+DOWNLOAD_URL="https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/linux/amd64/kubectl"
+info "Downloading kubectl from $DOWNLOAD_URL..."
+curl -O $DOWNLOAD_URL
 if [[ $? -ne 0 ]]; then
     error "Failed to download kubectl. Please check your internet connection."
 else
