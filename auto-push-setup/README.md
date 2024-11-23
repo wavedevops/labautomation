@@ -73,6 +73,8 @@ Make sure the script `gitp.sh` exists in the `~/.customCommands` directory. If y
 
 ---
 
+
+
 ### **3. Reload Your Shell Configuration**
 
 Reload the `~/.zshrc` file to apply the changes:
