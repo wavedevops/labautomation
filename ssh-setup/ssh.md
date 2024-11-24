@@ -13,10 +13,20 @@ chmod 600 /home/ec2-user/id_rsa
 ```
 ---
 # Run in the local
+
 ```bash
-scp ec2-user@50.16.27.226:/root/.ssh/id_rsa ~/.ssh/
+scp ec2-user@50.16.27.226:/home/ec2-user/id_rsa ~/.ssh/
+
+```
+---
+OR
+---
+install ssh pass to pass password to one line command
+---
+```shell
+brew install sshpass
 ```
 ```bash
-ec2-user@50.16.27.226's password:DevOps321
-```
+sshpass -p 'DevOps321' scp ec2-user@50.16.27.226:/home/ec2-user/id_rsa ~/.ssh/
+````
 ---
