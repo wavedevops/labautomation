@@ -48,3 +48,5 @@ sudo groupdel docker &>> "$LOG_FILE"
 check_status
 
 echo -e "${GREEN}Docker uninstallation completed successfully!${NC}" | tee -a "$LOG_FILE"
+
+
