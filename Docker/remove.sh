@@ -16,37 +16,42 @@ check_status() {
   fi
 }
 
-echo -e "${GREEN}Starting Docker uninstallation script...${NC}" | tee -a "$LOG_FILE"
+echo -e "${GREEN}Starting complete Docker uninstallation script...${NC}" | tee -a "$LOG_FILE"
 
-# Step 1: Stop Docker Service
-echo -e "${GREEN}Stopping Docker service...${NC}" | tee -a "$LOG_FILE"
-sudo systemctl stop docker &>> "$LOG_FILE"
+# Step 1: Stop and disable Docker services
+echo -e "${GREEN}Stopping and disabling Docker service...${NC}" | tee -a "$LOG_FILE"
+sudo systemctl stop docker containerd &>> "$LOG_FILE"
+sudo systemctl disable docker containerd &>> "$LOG_FILE"
+sudo systemctl reset-failed docker containerd &>> "$LOG_FILE"
 check_status
 
-# Step 2: Disable Docker Service
-echo -e "${GREEN}Disabling Docker service...${NC}" | tee -a "$LOG_FILE"
-sudo systemctl disable docker &>> "$LOG_FILE"
+# Step 2: Uninstall Docker and all dependencies
+echo -e "${GREEN}Removing all Docker packages and dependencies...${NC}" | tee -a "$LOG_FILE"
+sudo yum remove -y docker* containerd* podman* &>> "$LOG_FILE"
 check_status
 
-# Step 3: Uninstall Docker and Dependencies
-echo -e "${GREEN}Removing Docker packages...${NC}" | tee -a "$LOG_FILE"
-sudo yum remove -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &>> "$LOG_FILE"
+# Step 3: Remove Docker repository
+echo -e "${GREEN}Removing Docker repository from YUM...${NC}" | tee -a "$LOG_FILE"
+sudo rm -f /etc/yum.repos.d/docker-ce.repo &>> "$LOG_FILE"
 check_status
 
-# Step 4: Remove Docker Files and Configurations
-echo -e "${GREEN}Removing Docker files...${NC}" | tee -a "$LOG_FILE"
+# Step 4: Remove all Docker-related files and configurations
+echo -e "${GREEN}Deleting Docker files and configurations...${NC}" | tee -a "$LOG_FILE"
 sudo rm -rf /var/lib/docker /etc/docker &>> "$LOG_FILE"
+sudo rm -rf /var/lib/containerd /var/lib/containers &>> "$LOG_FILE"
+sudo rm -rf /var/run/docker.sock &>> "$LOG_FILE"
+sudo rm -rf ~/.docker &>> "$LOG_FILE"
 check_status
 
-echo -e "${GREEN}Removing containerd files...${NC}" | tee -a "$LOG_FILE"
-sudo rm -rf /var/lib/containerd &>> "$LOG_FILE"
-check_status
-
-# Step 5: Remove Docker Group (Optional)
+# Step 5: Remove Docker group (if exists)
 echo -e "${GREEN}Removing Docker group...${NC}" | tee -a "$LOG_FILE"
 sudo groupdel docker &>> "$LOG_FILE"
 check_status
 
-echo -e "${GREEN}Docker uninstallation completed successfully!${NC}" | tee -a "$LOG_FILE"
+# Step 6: Clean up remaining Docker-related files and dependencies
+echo -e "${GREEN}Cleaning up YUM cache and unused dependencies...${NC}" | tee -a "$LOG_FILE"
+sudo yum autoremove -y &>> "$LOG_FILE"
+sudo yum clean all &>> "$LOG_FILE"
+check_status
 
-
+echo -e "${GREEN}Docker and all related files have been completely removed!${NC}" | tee -a "$LOG_FILE"
